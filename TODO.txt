@@ -1,0 +1,11 @@
+Ideas:
+
+
+ - Add a Object.clone method to Object
+   -  Simpler than setting __proto__
+ - Make constructor into a decorator-maker, accepting a 'bases' argument for wrapping other classes
+   - For example if you want to use some library in a prototyped-style
+   - We should add this bases to the new type() or add __bases__ to Object
+ - A Object.mixin(*protos) utility -- extends the object with the protos attribs
+   - Since we don't have multiple/differential inheritance like Io
+ - Add a functionaly like attrs (https://pypi.python.org/pypi/attrs/)
