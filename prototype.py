@@ -29,8 +29,6 @@ import types
 import inspect
 
 
-# UTILS
-
 def _getattr(obj, name):
     try:
         return object.__getattribute__(obj, name)
@@ -47,10 +45,18 @@ def _proto_getattr(obj, name):
         val = _getattr(obj, name)
     return val
 
+def _proto_clone(constructor):
+    def clone(this, *args, **kwargs):
+        new_obj = constructor(*args, **kwargs)
+        new_obj.__proto__ = this
+        return new_obj
+    return clone
+
 
 class ObjectMetaClass(type):
     def __repr__(cls):
         return "<constructor '%s'>" % cls.__name__
+
 
 @six.add_metaclass(ObjectMetaClass)
 class Object(object):
@@ -59,6 +65,7 @@ class Object(object):
     def __init__(this):
         this.__proto__ = this.prototype
         this.constructor = this.__class__
+        this.clone = _proto_clone(this.constructor)
 
     def __getattribute__(this, name):
         val = _proto_getattr(this, name)
@@ -85,6 +92,7 @@ class Object(object):
             val.fdel(this)
         else:
             object.__delattr__(this, name)
+
 
 Object.prototype = Object()
 

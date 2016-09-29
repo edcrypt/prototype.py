@@ -105,8 +105,7 @@ Deleting Dizzy Gillespie.
 
 # using prototype inheritence
 >>> father = Person('Tom', 'Bard')
->>> son = Person('Tommy', 'Bard')
->>> son.__proto__ = father
+>>> son = father.clone('Tommy', 'Bard')
 >>> father.eyeColor = 'blue'
 >>> son.eyeColor
 'blue'
