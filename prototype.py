@@ -21,6 +21,7 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
+import six
 
 import types
 import inspect
@@ -49,8 +50,8 @@ class ObjectMetaClass(type):
     def __repr__(cls):
         return "<constructor '%s'>" % cls.__name__
 
+@six.add_metaclass(ObjectMetaClass)
 class Object(object):
-    __metaclass__ = ObjectMetaClass
     prototype = None
 
     def __init__(this):
