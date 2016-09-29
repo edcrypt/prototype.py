@@ -21,10 +21,11 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-
 """
 prototype.py - A tiny python library that simulates prototype
 inheritence in javascript
+
+>>> from __future__ import print_function
 
 # create a new type using @constructor
 >>> from prototype import *
@@ -49,12 +50,12 @@ inheritence in javascript
 'alto sax'
 
 # unset attributes just return None
->>> print bird.age
+>>> print(bird.age)
 None
 
 # add methods to the instance
 >>> def sing(this):
-...   print '%s sings!!' % this.lastName
+...   print('%s sings!!' % this.lastName)
 ...
 >>> bird.sing = sing
 >>> bird.sing()
@@ -68,7 +69,7 @@ Parker sings!!
 >>> bird.name
 'Charlie Parker'
 >>> def greet(this):
-...   print 'Hello, my name is %s' % this.name
+...   print( 'Hello, my name is %s' % this.name)
 ...
 >>> Person.prototype.greet = greet
 >>> bird.greet()
@@ -92,7 +93,7 @@ Hello, my name is Thelonious Monk
 
 # property deleter
 >>> def deleteName(this):
-...   print 'Deleting %s.' % this.name
+...   print('Deleting %s.' % this.name)
 ...   del this.firstName
 ...   del this.lastName
 ...
