@@ -52,6 +52,11 @@ def _proto_clone(constructor):
         return new_obj
     return clone
 
+def _proto_method(obj):
+    def _method(func):
+        setattr(obj.prototype, func.__name__, func)
+    return _method
+
 
 class ObjectMetaClass(type):
     def __repr__(cls):
@@ -99,6 +104,7 @@ Object.prototype = Object()
 def constructor(func):
     ret = type(func.__name__, (Object,), dict())
     ret.prototype = ret()
+    ret.method = _proto_method(ret)
 
     def init(this, *vargs, **kwargs):
         Object.__init__(this)

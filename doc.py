@@ -68,10 +68,10 @@ Parker sings!!
 >>> Person.prototype.name = property(getName)
 >>> bird.name
 'Charlie Parker'
->>> def greet(this):
+>>> @Person.method
+... def greet(this):
 ...   print( 'Hello, my name is %s' % this.name)
 ...
->>> Person.prototype.greet = greet
 >>> bird.greet()
 Hello, my name is Charlie Parker
 >>> monk = Person('Thelonious', 'Monk')
