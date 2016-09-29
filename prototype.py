@@ -22,8 +22,11 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+import types
 import inspect
-import new
+
+
+# UTILS
 
 def _getattr(obj, name):
     try:
@@ -41,6 +44,7 @@ def _proto_getattr(obj, name):
         val = _getattr(obj, name)
     return val
 
+
 class ObjectMetaClass(type):
     def __repr__(cls):
         return "<constructor '%s'>" % cls.__name__
@@ -56,10 +60,10 @@ class Object(object):
     def __getattribute__(this, name):
         val = _proto_getattr(this, name)
         if isinstance(val, property) and val.fget:
-            get = new.instancemethod(val.fget, this)
+            get = types.MethodType(val.fget, this)
             return get()
         elif inspect.isfunction(val):
-            func = new.instancemethod(val, this)
+            func = types.MethodType(val, this)
             return func
         else:
             return val
