@@ -54,10 +54,10 @@ inheritence in javascript
 None
 
 # add methods to the instance
->>> def sing(this):
+>>> @bird.method
+... def sing(this):
 ...   print('%s sings!!' % this.lastName)
 ...
->>> bird.sing = sing
 >>> bird.sing()
 Parker sings!!
 
@@ -124,8 +124,7 @@ Deleting Dizzy Gillespie.
 1
 
 # multi-level inheritence
->>> grandson = Person('Tony', 'Bard')
->>> grandson.__proto__ = son
+>>> grandson = son.clone('Tony', 'Bard')
 >>> grandson.eyeColor
 'blue'
 """
