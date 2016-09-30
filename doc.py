@@ -22,8 +22,8 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 """
-prototype.py - A tiny python library that simulates prototype
-inheritence in javascript
+prototype.py - A tiny Python library implementing the prototype pattern
+
 
 >>> from __future__ import print_function
 
@@ -70,7 +70,7 @@ Parker sings!!
 'Charlie Parker'
 >>> @Person.method
 ... def greet(this):
-...   print( 'Hello, my name is %s' % this.name)
+...   print('Hello, my name is %s' % this.name)
 ...
 >>> bird.greet()
 Hello, my name is Charlie Parker
